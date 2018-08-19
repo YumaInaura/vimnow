@@ -9,7 +9,7 @@ for arg in "$@"; do
   fi
   
   if [ "$arg" = '--update' ]; then
-    curl https://raw.githubusercontent.com/yumainaura/vimnow/master/install.sh?$((RANDOM)) | sudo bash; echo
+    curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/yumainaura/vimnow/master/install.sh | sudo bash; echo
     vimnow --version
     exit
   fi
