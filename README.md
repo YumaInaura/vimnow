@@ -1,6 +1,10 @@
 # vimnow
 
-Do you Wanna start editing vim with new temporary file anytime?
+Do you Wanna start editing with VIM anytime?
+
+- Without move current directory
+- Without touch file or specify filename
+- Without hit command to give file permission to script 
 
 ## Install 
 
