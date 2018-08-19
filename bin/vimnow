@@ -1,17 +1,19 @@
 #!/bin/bash -eu
 
-readonly VERSION=0.1.0
+readonly VERSION=0.1.1
 
-if [ "$1" = '--version' ]; then
-  echo "$VERSION"
-  exit
-fi
-
-if [ "$1" = '--update' ]; then
-  curl https://raw.githubusercontent.com/YumaInaura/vimnow/master/install.sh | sudo bash; echo
-  vimnow --version
-  exit
-fi
+for arg in "$@"; do
+  if [ "$arg" = '--version' ]; then
+    echo "$VERSION"
+    exit
+  fi
+  
+  if [ "$arg" = '--update' ]; then
+    curl https://raw.githubusercontent.com/yumainaura/vimnow/master/install.sh?$((random)) | sudo bash; echo
+    vimnow --version
+    exit
+  fi
+done
 
 readonly save_dir=${VIMNOW_PATH:-~/vimnow}
 
