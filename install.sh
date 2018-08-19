@@ -1,6 +1,6 @@
 #!/bin/bash -eu
 
-curl -o .vimnow_donwnload https://raw.githubusercontent.com/YumaInaura/vimnow/master/bin/vimnow
+curl -H 'Cache-Control: no-cache' -o .vimnow_donwnload https://raw.githubusercontent.com/YumaInaura/vimnow/master/bin/vimnow
 
 chmod +x .vimnow_donwnload
 
