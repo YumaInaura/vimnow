@@ -1,5 +1,10 @@
 #!/bin/bash -eu
 
+if [ $1 = 'test' ]; then
+  shopt -s expand_aliases
+  alias vim="echo 'VIM EDITING'"
+fi
+
 readonly save_dir=${VIMNOW_PATH:-~/vimnow}
 
 mkdir -p "$save_dir"
