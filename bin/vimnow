@@ -1,6 +1,6 @@
 #!/bin/bash -eu
 
-readonly VERSION=0.1.1
+readonly VERSION=0.1.2
 
 for arg in "$@"; do
   if [ "$arg" = '--version' ]; then
