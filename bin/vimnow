@@ -15,7 +15,7 @@ for arg in "$@"; do
     echo "$VERSION"
     exit
   elif [ "$arg" = '--update' ]; then
-    curl 'https://raw.githubusercontent.com/yumainaura/vimnow/master/install.sh?'$((RANDOM))$((RANDOM)) | sudo bash; echo
+    curl 'https://raw.githubusercontent.com/yumainaura/vimnow/master/install.sh?'$((RANDOM))$((RANDOM)) | bash; echo
     vimnow --version
     exit
   elif [ "$arg" = '--list' ]; then
