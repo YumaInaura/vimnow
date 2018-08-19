@@ -2,9 +2,12 @@
 
 rm -rf ~/tmp/vimnow/test
 
+shopt -s expand_aliases
+alias vim="echo 'VIM EDITING'"
+
 export VIMNOW_PATH=~/tmp/vimnow/test
 
-./bin/vimnow --test
+source ./bin/vimnow
 
 readonly files=$(ls ~/tmp/vimnow/test)
 
