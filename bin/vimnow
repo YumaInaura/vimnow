@@ -5,6 +5,9 @@ readonly save_dir=${VIMNOW_PATH:-~/vimnow}
 mkdir -p "$save_dir"
 
 file_extension=''
+for option in "$@"; do
+  [ "$option" = '--sh' ] && file_extension='.sh'
+done
 
 readonly filepath="$save_dir"/$(date -u | sed 's/ /-/g')-$(date +%s)"$file_extension"
 
@@ -12,9 +15,5 @@ touch "$filepath"
 chmod 0755 "$filepath"
 
 echo "${filepath}" > "${save_dir}/.latest_filepath"
-
-for option in "$@"; do
-  [ "$option" = '--sh' ] && file_extension='.sh'
-done
 
 vim "${filepath}"
