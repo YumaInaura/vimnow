@@ -10,5 +10,7 @@ for option in "$@"; do
   [ "$option" = '--sh' ] && file_extension='.sh'
 done
 
-vim "$save_dir"/$(date -u | sed 's/ /-/g')-$(date +%s)"$file_extension"
+readonly filepath="$save_dir"/$(date -u | sed 's/ /-/g')-$(date +%s)"$file_extension"
+echo "${filepath}" > "${save_dir}.latest_filepath"
 
+vim "${filepath}"
