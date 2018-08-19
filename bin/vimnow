@@ -19,7 +19,7 @@ for arg in "$@"; do
     vimnow --version
     exit
   elif [ "$arg" = '--list' ]; then
-    find "$save_dir" -type f -maxdepth 1 | xargs ls -l
+    find "$save_dir" -type f -maxdepth 1 | grep -v -e '/\.[a-zA-Z0-9_\.]\+$' | xargs ls -l
     exit
   elif [ "$arg" = '--path' ]; then
     echo "$save_dir"
