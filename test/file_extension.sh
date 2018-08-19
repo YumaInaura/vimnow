@@ -2,7 +2,7 @@
 
 source ./test/prepare/before.sh
 
-source ./bin/vimnow --sh
+./bin/vimnow --sh
 
 readonly files=$(ls "$test_save_dir" | grep '\.sh')
 

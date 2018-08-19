@@ -4,7 +4,7 @@ source ./test/prepare/before.sh
 
 export VIMNOW_PATH=~/tmp/vimnow/test
 
-source ./bin/vimnow
+./bin/vimnow
 
 readonly files=$(ls ~/tmp/vimnow/test)
 
