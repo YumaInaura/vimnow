@@ -6,3 +6,4 @@ chmod +x .vimnow_donwnload
 
 mv .vimnow_donwnload /usr/local/bin/vimnow
 
+echo "vimnow installed"

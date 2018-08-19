@@ -2,3 +2,4 @@
 
 rm -f /usr/local/bin/vimnow
 
+echo "vimnow uninstalled"
