@@ -9,8 +9,10 @@ unalias -a
 
 # For Mac OS
 if [ $(uname) = 'Darwin' ]; then
+  # FIXME: Ask yes or no
   which gstat >/dev/null || brew install coreutils
   alias stat='gstat'
+  # FIXME: Ask yes or no
   which gdate >/dev/null || brew install coreutils
   alias date='gdate'
 fi
