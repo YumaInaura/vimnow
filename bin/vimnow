@@ -1,5 +1,12 @@
 #!/bin/bash -eu
 
+for arg in "$@"; do
+  if [ "$arg" = '--test' ]; then
+    shopt -s expand_aliases
+    alias vim="echo 'VIM EDITING'"
+  fi
+done
+
 readonly save_dir=${VIMNOW_PATH:-~/vimnow}
 
 mkdir -p "$save_dir"
