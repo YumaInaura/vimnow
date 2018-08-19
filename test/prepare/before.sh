@@ -2,6 +2,7 @@
 
 readonly test_save_dir=~/tmp/vimnow/test
 export VIMNOW_PATH="$test_save_dir"
+export TEST_MODE=true
 
 rm -rf ~/tmp/vimnow/test # Do not use variable because missing remove is so dangerous
 
@@ -9,12 +10,16 @@ unalias -a
 
 # For Mac OS
 if [ $(uname) = 'Darwin' ]; then
-  which gstat >/dev/null || brew install coreutils
-  alias stat='gstat'
+  # FIXME: Ask yes or no
   which gdate >/dev/null || brew install coreutils
   alias date='gdate'
+  function stat() {
+    gdate $@
+  }
+
+  # FIXME: Ask yes or no
+  which gstat >/dev/null || brew install coreutils
+  function stat() {
+    gstat $@
+  }
 fi
-
-shopt -s expand_aliases
-alias vim="echo 'VIM EDITING'; echo"
-
