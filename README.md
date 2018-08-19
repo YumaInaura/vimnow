@@ -7,16 +7,10 @@ Do you Wanna start editing vim with new temporary file anytime?
 Download executable script from remote
 
 ```
-$ git clone https://github.com/YumaInaura/vimnow
+curl https://raw.githubusercontent.com/YumaInaura/vimnow/master/install.sh | sudo bash
 ```
 
-Put executable script to your $PATH
-
-e.g
-
-```
-$ cp vimnow/bin/vimnow /usr/local/bin
-```
+## Usage
 
 ```
 $ vimnow
