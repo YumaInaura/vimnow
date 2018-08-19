@@ -1,6 +1,8 @@
 #!/bin/bash -eu
 
-for test_file in $(find ./test/*.sh | grep -v 'run.sh'); do
+basedir=$(dirname "$0")
+
+for test_file in $(find "${basedir}" -name "*.sh" -maxdepth 1 | grep -v 'run.sh'); do
   echo "======================="
   echo $test_file
   echo "======================="
