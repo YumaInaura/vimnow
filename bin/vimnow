@@ -15,7 +15,7 @@ for arg in "$@"; do
   fi
 done
 
-readonly save_dir=${vimnow_path:-~/vimnow}
+readonly save_dir=${VIMNOW_PATH:-~/vimnow}
 
 mkdir -p "$save_dir"
 
