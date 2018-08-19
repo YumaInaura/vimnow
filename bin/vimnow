@@ -1,6 +1,6 @@
 #!/bin/bash -eu
 
-readonly VERSION=0.1.3
+readonly VERSION=0.1.4
 
 readonly test_mode=${TEST_MODE:-false}
 if "$test_mode"; then
@@ -15,7 +15,7 @@ for arg in "$@"; do
     echo "$VERSION"
     exit
   elif [ "$arg" = '--update' ]; then
-    curl -H 'https://raw.githubusercontent.com/yumainaura/vimnow/master/install.sh?'$((RANDOM))$((RANDOM)) | sudo bash; echo
+    curl 'https://raw.githubusercontent.com/yumainaura/vimnow/master/install.sh?'$((RANDOM))$((RANDOM)) | sudo bash; echo
     vimnow --version
     exit
   elif [ "$arg" = '--list' ]; then
