@@ -1,0 +1,8 @@
+#!/bin/bash -eu
+
+readonly workdir=~/vimnow
+
+mkdir -p "$workdir"
+
+vim "$workdir"/$(date -u | sed 's/ /-/g')-$(date +%s)
+
