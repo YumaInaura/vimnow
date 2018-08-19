@@ -1,6 +1,23 @@
 #!/bin/bash -eu
 
+unalias -a
+
 readonly VERSION=0.1.4
+# For Mac OS
+
+if [ $(uname) = 'Darwin' ]; then
+  # FIXME: Ask yes or no
+  which gdate >/dev/null || brew install coreutils
+  function date() {
+    gdate $@
+  }
+
+  # FIXME: Ask yes or no
+  which gstat >/dev/null || brew install coreutils
+  function stat() {
+    gstat $@
+  }
+fi
 
 readonly test_mode=${TEST_MODE:-false}
 if "$test_mode"; then
@@ -42,3 +59,6 @@ chmod 0755 "$filepath"
 echo "${filepath}" > "${save_dir}/.latest_filepath"
 
 vim "${filepath}"
+
+[ $(stat -c '%s' "$filepath") == 0 ] && rm "$filepath"
+
