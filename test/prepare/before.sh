@@ -9,9 +9,6 @@ rm -rf ~/tmp/vimnow/test # Do not use variable because missing remove is so dang
 if [ $(uname) = 'Darwin' ]; then
   alias stat='gstat'
   alias date='gdate'
-  alias tee='gtee'
-  alias split='gspit'
-  alias echo='gecho'
 fi
 
 shopt -s expand_aliases
