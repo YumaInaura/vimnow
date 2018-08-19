@@ -1,6 +1,6 @@
 #!/bin/bash -eu
 
-curl -H 'Cache-Control: no-cache' -o .vimnow_donwnload 'https://raw.githubusercontent.com/YumaInaura/vimnow/master/bin/vimnow?'$((RANDOM))$((RANDOM))
+curl -o .vimnow_donwnload 'https://raw.githubusercontent.com/YumaInaura/vimnow/master/bin/vimnow?'$((RANDOM))$((RANDOM))
 
 chmod +x .vimnow_donwnload
 
