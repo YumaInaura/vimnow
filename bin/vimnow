@@ -1,9 +1,11 @@
 #!/bin/bash -eu
 
-if [ $1 = 'test' ]; then
-  shopt -s expand_aliases
-  alias vim="echo 'VIM EDITING'"
-fi
+for arg in "$@"; do
+  if [ "$arg" = '--test' ]; then
+    shopt -s expand_aliases
+    alias vim="echo 'VIM EDITING'"
+  fi
+done
 
 readonly save_dir=${VIMNOW_PATH:-~/vimnow}
 
