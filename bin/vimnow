@@ -8,20 +8,21 @@ if "$test_mode"; then
   alias vim=":"
 fi
 
+readonly save_dir=${VIMNOW_PATH:-~/vimnow}
+
 for arg in "$@"; do
   if [ "$arg" = '--version' ]; then
     echo "$VERSION"
     exit
-  fi
-  
-  if [ "$arg" = '--update' ]; then
+  elif [ "$arg" = '--update' ]; then
     curl -H 'https://raw.githubusercontent.com/yumainaura/vimnow/master/install.sh?'$((RANDOM))$((RANDOM)) | sudo bash; echo
     vimnow --version
     exit
+  elif [ "$arg" = '--list' ]; then
+    find "$save_dir" -type f -maxdepth 1 | xargs ls -l
+    exit
   fi
 done
-
-readonly save_dir=${VIMNOW_PATH:-~/vimnow}
 
 mkdir -p "$save_dir"
 
