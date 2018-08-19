@@ -35,3 +35,8 @@ ls ~/vimnow/
 Sun-Aug-19-00:43:52-UTC-2018-1534639432
 ```
 
+## Development
+
+```
+./test/run.sh
+```
