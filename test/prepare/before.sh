@@ -12,8 +12,7 @@ unalias -a
 if [ $(uname) = 'Darwin' ]; then
   # FIXME: Ask yes or no
   which gdate >/dev/null || brew install coreutils
-  alias date='gdate'
-  function stat() {
+  function date() {
     gdate $@
   }
 
