@@ -5,13 +5,14 @@ export VIMNOW_PATH="$test_save_dir"
 
 rm -rf ~/tmp/vimnow/test # Do not use variable because missing remove is so dangerous
 
+unalias -a
+
 # For Mac OS
 if [ $(uname) = 'Darwin' ]; then
+  which gstat >/dev/null || brew install coreutils
   alias stat='gstat'
+  which gdate >/dev/null || brew install coreutils
   alias date='gdate'
-  alias tee='gtee'
-  alias split='gspit'
-  alias echo='gecho'
 fi
 
 shopt -s expand_aliases
