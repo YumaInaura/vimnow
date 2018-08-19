@@ -7,6 +7,12 @@ if [ "$1" = '--version' ]; then
   exit
 fi
 
+if [ "$1" = '--update' ]; then
+  curl https://raw.githubusercontent.com/YumaInaura/vimnow/master/install.sh | sudo bash; echo
+  vimnow --version
+  exit
+fi
+
 readonly save_dir=${VIMNOW_PATH:-~/vimnow}
 
 mkdir -p "$save_dir"
