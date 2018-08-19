@@ -1,5 +1,12 @@
 #!/bin/bash -eu
 
+readonly VERSION=0.1.0
+
+if [ "$1" = '--version' ]; then
+  echo "$VERSION"
+  exit
+fi
+
 readonly save_dir=${VIMNOW_PATH:-~/vimnow}
 
 mkdir -p "$save_dir"
