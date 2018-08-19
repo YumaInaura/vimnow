@@ -21,6 +21,9 @@ for arg in "$@"; do
   elif [ "$arg" = '--list' ]; then
     find "$save_dir" -type f -maxdepth 1 | xargs ls -l
     exit
+  elif [ "$arg" = '--path' ]; then
+    echo "$save_dir"
+    exit
   fi
 done
 
