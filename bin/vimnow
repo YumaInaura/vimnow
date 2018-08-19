@@ -1,6 +1,6 @@
 #!/bin/bash -eu
 
-readonly VERSION=0.1.3
+readonly VERSION=0.1.4
 
 readonly test_mode=${TEST_MODE:-false}
 if "$test_mode"; then
