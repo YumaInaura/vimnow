@@ -1,8 +1,8 @@
 #!/bin/bash -eu
 
-readonly workdir=~/vimnow
+readonly save_dir=${VIMNOW_PATH:-~/vimnow}
 
-mkdir -p "$workdir"
+mkdir -p "$save_dir"
 
-vim "$workdir"/$(date -u | sed 's/ /-/g')-$(date +%s)
+vim "$save_dir"/$(date -u | sed 's/ /-/g')-$(date +%s)
 
