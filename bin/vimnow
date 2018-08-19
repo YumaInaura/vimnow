@@ -1,6 +1,6 @@
 #!/bin/bash -eu
 
-readonly VERSION=0.1.2
+readonly VERSION=0.1.3
 
 for arg in "$@"; do
   if [ "$arg" = '--version' ]; then
@@ -9,7 +9,7 @@ for arg in "$@"; do
   fi
   
   if [ "$arg" = '--update' ]; then
-    curl -H 'Cache-Control: no-cache' https://raw.githubusercontent.com/yumainaura/vimnow/master/install.sh | sudo bash; echo
+    curl -H 'Cache-Control: no-cache' 'https://raw.githubusercontent.com/yumainaura/vimnow/master/install.sh?'$((RANDOM))$((RANDOM)) | sudo bash; echo
     vimnow --version
     exit
   fi
