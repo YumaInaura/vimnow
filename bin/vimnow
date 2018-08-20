@@ -1,6 +1,6 @@
 #!/bin/bash -eu
 
-readonly VERSION=0.1.5
+readonly VERSION=0.2.0
 # For Mac OS
 
 if [ $(uname) = 'Darwin' ]; then
@@ -23,7 +23,7 @@ for arg in "$@"; do
   if [ "$arg" = '--version' ]; then
     echo "$VERSION"
     exit
-  elif [ "$arg" = '--update' ]; then
+  elif [ "$arg" = '--upgrade' ]; then
     curl 'https://raw.githubusercontent.com/yumainaura/vimnow/master/install.sh?'$((RANDOM))$((RANDOM)) | bash; echo
     vimnow --version
     exit
@@ -43,7 +43,12 @@ for option in "$@"; do
   [ "$option" = '--sh' ] && file_extension='.sh'
 done
 
-readonly filepath="$save_dir"/$(date -u | sed 's/ /-/g')-$(date +%s)"$file_extension"
+readonly specify_filename=${1:-}
+if [ ! -z "$specify_filename" ] && [[ "$specify_filename" =~ ^[a-zA-Z0-9\.]+$ ]]; then
+  readonly filepath="$save_dir"/"$1"
+else
+  readonly filepath="$save_dir"/$(date -u | sed 's/ /-/g')-$(date +%s)"$file_extension"
+fi
 
 touch "$filepath"
 chmod 0755 "$filepath"
