@@ -58,6 +58,8 @@ fi
 
 vim "${filepath}"
 
-[ $(stat -c '%s' "$filepath") == 0 ] && rm "$filepath"
-
-echo "$filepath"
+if [ $(stat -c '%s' "$filepath") == 0 ]; then
+  rm "$filepath"
+elif
+  echo "$filepath"
+fi
