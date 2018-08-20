@@ -49,8 +49,6 @@ mkdir -p "$save_dir"
 touch "$filepath"
 chmod 0755 "$filepath"
 
-echo "${filepath}" > "${save_dir}/.latest_filepath"
-
 readonly test_mode=${TEST_MODE:-false}
 if "$test_mode"; then
   shopt -s expand_aliases
