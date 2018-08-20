@@ -6,8 +6,6 @@ export TEST_MODE=true
 
 rm -rf ~/tmp/vimnow/test # Do not use variable because missing remove is so dangerous
 
-unalias -a
-
 # For Mac OS
 if [ $(uname) = 'Darwin' ]; then
   # FIXME: Ask yes or no
