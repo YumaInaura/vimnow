@@ -1,12 +1,4 @@
-#!/bin/bash -eu
-
-export VIMNOW_PATH=./test
-export VIMNOW_LIB_PATH=./lib
-export TEST_MODE=true
-
-rm -rf ~/tmp/vimnow/test # Do not use variable because missing remove is so dangerous
-
-# For Mac OS
+# For Mac OSdddd
 if [ $(uname) = 'Darwin' ]; then
   # FIXME: Ask yes or no
   which gdate >/dev/null || brew install coreutils
@@ -20,3 +12,5 @@ if [ $(uname) = 'Darwin' ]; then
     gstat $@
   }
 fi
+
+

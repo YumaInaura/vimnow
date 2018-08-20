@@ -1,23 +1,18 @@
 #!/bin/bash -eu
 
-readonly VERSION=0.2.0
-# For Mac OS
+readonly VERSION=0.2.1
 
-if [ $(uname) = 'Darwin' ]; then
-  # FIXME: Ask yes or no
-  which gdate >/dev/null || brew install coreutils
-  function date() {
-    gdate $@
-  }
+readonly vimnow_path=${VIMNOW_PATH:-~/vimnow}
+readonly save_dir="$vimnow_path"/save
 
-  # FIXME: Ask yes or no
-  which gstat >/dev/null || brew install coreutils
-  function stat() {
-    gstat $@
-  }
+readonly vimnow_lib_path=${VIMNOW_LIB_PATH:-}
+if [ ! -z "$vimnow_lib_path" ]; then
+  readonly lib_dir="$vimnow_lib_path"
+else
+  readonly lib_dir="$vimnow_path"/lib
 fi
 
-readonly save_dir=${VIMNOW_PATH:-~/vimnow}
+source "$lib_dir"/.setting
 
 for arg in "$@"; do
   if [ "$arg" = '--version' ]; then
@@ -50,10 +45,9 @@ else
   readonly filepath="$save_dir"/$(date -u | sed 's/ /-/g')-$(date +%s)"$file_extension"
 fi
 
+mkdir -p "$save_dir"
 touch "$filepath"
 chmod 0755 "$filepath"
-
-echo "${filepath}" > "${save_dir}/.latest_filepath"
 
 readonly test_mode=${TEST_MODE:-false}
 if "$test_mode"; then
