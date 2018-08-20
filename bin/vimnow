@@ -23,7 +23,7 @@ for arg in "$@"; do
   if [ "$arg" = '--version' ]; then
     echo "$VERSION"
     exit
-  elif [ "$arg" = '--update' ]; then
+  elif [ "$arg" = '--upgrade' ]; then
     curl 'https://raw.githubusercontent.com/yumainaura/vimnow/master/install.sh?'$((RANDOM))$((RANDOM)) | bash; echo
     vimnow --version
     exit
