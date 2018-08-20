@@ -1,6 +1,6 @@
 #!/bin/bash -eu
 
-readonly VERSION=0.1.5
+readonly VERSION=0.2.0
 # For Mac OS
 
 if [ $(uname) = 'Darwin' ]; then
