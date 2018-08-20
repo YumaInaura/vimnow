@@ -19,12 +19,6 @@ if [ $(uname) = 'Darwin' ]; then
   }
 fi
 
-readonly test_mode=${TEST_MODE:-false}
-if "$test_mode"; then
-  shopt -s expand_aliases
-  alias vim=":"
-fi
-
 readonly save_dir=${VIMNOW_PATH:-~/vimnow}
 
 for arg in "$@"; do
@@ -58,7 +52,14 @@ chmod 0755 "$filepath"
 
 echo "${filepath}" > "${save_dir}/.latest_filepath"
 
+readonly test_mode=${TEST_MODE:-false}
+if "$test_mode"; then
+  shopt -s expand_aliases
+  alias vim="echo 'EDITED' > $filepath"
+fi
+
 vim "${filepath}"
 
 [ $(stat -c '%s' "$filepath") == 0 ] && rm "$filepath"
 
+echo "$filepath"
