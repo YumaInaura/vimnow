@@ -1,23 +1,11 @@
 #!/bin/bash -eu
 
 readonly VERSION=0.2.0
-# For Mac OS
-
-if [ $(uname) = 'Darwin' ]; then
-  # FIXME: Ask yes or no
-  which gdate >/dev/null || brew install coreutils
-  function date() {
-    gdate $@
-  }
-
-  # FIXME: Ask yes or no
-  which gstat >/dev/null || brew install coreutils
-  function stat() {
-    gstat $@
-  }
-fi
 
 readonly save_dir=${VIMNOW_PATH:-~/vimnow}
+
+readonly lib_dir=${VIMNOW_LIBRALY_PATH:-~/vimnow/lib}
+source "$lib_dir"/.setting
 
 for arg in "$@"; do
   if [ "$arg" = '--version' ]; then
