@@ -2,9 +2,16 @@
 
 readonly VERSION=0.2.0
 
-readonly save_dir=${VIMNOW_PATH:-~/vimnow}
+readonly vimnow_path=${VIMNOW_PATH:-~/vimnow}
+readonly save_dir="$vimnow_path"/save
 
-readonly lib_dir=${VIMNOW_LIBRALY_PATH:-~/vimnow/lib}
+readonly vimnow_lib_path=${VIMNOW_LIB_PATH:-}
+if [ ! -z "$vimnow_lib_path" ]; then
+  readonly lib_dir="$vimnow_lib_path"
+else
+  readonly lib_dir="$vimnow_path"/lib
+fi
+
 source "$lib_dir"/.setting
 
 for arg in "$@"; do
@@ -38,6 +45,7 @@ else
   readonly filepath="$save_dir"/$(date -u | sed 's/ /-/g')-$(date +%s)"$file_extension"
 fi
 
+mkdir -p "$save_dir"
 touch "$filepath"
 chmod 0755 "$filepath"
 

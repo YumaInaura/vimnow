@@ -1,9 +1,8 @@
 #!/bin/bash -eu
 
-readonly test_save_dir=~/tmp/vimnow/test
-export VIMNOW_PATH="$test_save_dir"
+export VIMNOW_PATH=./test
+export VIMNOW_LIB_PATH=./lib
 export TEST_MODE=true
-export VIMNOW_LIBRALY_PATH=./lib
 
 rm -rf ~/tmp/vimnow/test # Do not use variable because missing remove is so dangerous
 
