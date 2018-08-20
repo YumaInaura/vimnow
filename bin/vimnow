@@ -1,6 +1,6 @@
 #!/bin/bash -eu
 
-readonly VERSION=0.1.4
+readonly VERSION=0.1.5
 # For Mac OS
 
 if [ $(uname) = 'Darwin' ]; then
@@ -58,6 +58,8 @@ fi
 
 vim "${filepath}"
 
-[ $(stat -c '%s' "$filepath") == 0 ] && rm "$filepath"
-
-echo "$filepath"
+if [ $(stat -c '%s' "$filepath") == 0 ]; then
+  rm "$filepath"
+else
+  echo "$filepath"
+fi
