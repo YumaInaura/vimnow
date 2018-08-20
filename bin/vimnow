@@ -1,7 +1,5 @@
 #!/bin/bash -eu
 
-unalias -a
-
 readonly VERSION=0.1.4
 # For Mac OS
 
