@@ -26,6 +26,11 @@ cp -rf "$download_tmp_dir"/bin "$vimnow_home_dir"
 rm -rf "$HOME"/vimnow/lib
 cp -rf "$download_tmp_dir"/lib "$vimnow_home_dir"
 
+# Link command to PATH
+readonly command_path=/usr/local/bin/vimnow
+rm -f "$command_path"
+ln -s "$HOME"/vimnow/bin/vimnow "$command_path"
+
 # Create data directory
 mkdir -p "$vimnow_home_dir"/save
 
