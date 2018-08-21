@@ -1,4 +1,8 @@
 #!/usr/bin/env bash -eu
 
 readonly filepath="$1"
+
+echo 'EDITED' >  "$filepath"
+
 echo "$filepath"
+
