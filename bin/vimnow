@@ -20,7 +20,6 @@ for arg in "$@"; do
     exit
   elif [ "$arg" = '--upgrade' ]; then
     curl 'https://raw.githubusercontent.com/yumainaura/vimnow/master/install.sh?'$((RANDOM))$((RANDOM)) | bash; echo
-    vimnow --version
     exit
   elif [ "$arg" = '--list' ]; then
     find "$save_dir" -type f -maxdepth 1 | grep -v -e '/\.[a-zA-Z0-9_\.]\+$' | xargs ls -l
