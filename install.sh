@@ -1,6 +1,6 @@
 #!/bin/bash -eu
 
-readonly github_code_base_url='https://raw.githubusercontent.com/YumaInaura/vimnow/master/bin/vimnow'
+readonly github_code_base_url='https://raw.githubusercontent.com/YumaInaura/vimnow/master/'
 
 readonly download_tmp_dir="$HOME"/.vimnow_download
 
