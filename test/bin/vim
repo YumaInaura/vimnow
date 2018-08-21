@@ -2,7 +2,7 @@
 
 readonly filepath="$1"
 
-echo 'EDITED' >  "$filepath"
+echo 'EDITED' > "$filepath"
 
 echo "$filepath"
 
