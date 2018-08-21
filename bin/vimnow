@@ -34,12 +34,16 @@ mkdir -p "$save_dir"
 
 file_extension=''
 is_execute_script=false
+continue_mode=false
 for option in "$@"; do
   [ "$option" = '--sh' ] && file_extension='.sh' && is_execute_script=true
+  [ "$option" = '--continue' ] && continue_mode=true
 done
 
 readonly specify_filename=${1:-}
-if [ ! -z "$specify_filename" ] && [[ "$specify_filename" =~ ^[a-zA-Z0-9\.]+$ ]]; then
+if "$continue_mode"; then
+  readonly filepath=$(find "$(vimnow --path)" -type f | xargs ls -t | grep -v -e '\.swp$' | head -n 1)
+elif [ ! -z "$specify_filename" ] && [[ "$specify_filename" =~ ^[a-zA-Z0-9\.]+$ ]]; then
   readonly filepath="$save_dir"/"$1"
 else
   readonly filepath="$save_dir"/$(date -u | sed 's/ /-/g')-$(date +%s)"$file_extension"
