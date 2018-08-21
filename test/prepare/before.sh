@@ -5,7 +5,7 @@ export VIMNOW_LIB_PATH=./lib
 export TEST_MODE=true
 export VIMNOW_VIM_PATH=./test/bin/vim
 
-rm -rf ~/tmp/vimnow/test # Do not use variable because missing remove is so dangerous
+rm -rf "$VIMNOW_PATH"/save # Do not use variable because missing remove is so dangerous
 
 # For Mac OS
 if [ $(uname) = 'Darwin' ]; then
