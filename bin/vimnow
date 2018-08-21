@@ -34,8 +34,9 @@ done
 mkdir -p "$save_dir"
 
 file_extension=''
+is_execute_script=false
 for option in "$@"; do
-  [ "$option" = '--sh' ] && file_extension='.sh'
+  [ "$option" = '--sh' ] && file_extension='.sh' && is_execute_script=true
 done
 
 readonly specify_filename=${1:-}
@@ -45,9 +46,13 @@ else
   readonly filepath="$save_dir"/$(date -u | sed 's/ /-/g')-$(date +%s)"$file_extension"
 fi
 
-mkdir -p "$save_dir"
 touch "$filepath"
-chmod 0755 "$filepath"
+
+if "$is_execute_script"; then
+  chmod 0755 "$filepath"
+else
+  chmod 0644 "$filepath"
+fi
 
 readonly vimnow_vim_path=${VIMNOW_VIM_PATH:-}
 if [ ! -z "$vimnow_vim_path" ]; then
