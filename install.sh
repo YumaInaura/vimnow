@@ -11,7 +11,10 @@ curl -o "$download_tmp_dir"/compress.gz "$github_code_base_url"/download/compres
 
 # Refresh libraries
 cp "$download_tmp_dir"/compress.gz "$HOME"/vimnow/
-tar -xzf "$download_tmp_dir"/compress.gz
+pushd "$HOME"/vimnow/
+  tar -xzf compress.gz
+popd
+rm "$HOME"/vimnow/compress.gz
 
 # Link command to PATH
 readonly command_path=/usr/local/bin/vimnow
