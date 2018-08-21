@@ -1,6 +1,7 @@
 #!/bin/bash -eu
 
-curl -o .vimnow_donwnload 'https://raw.githubusercontent.com/YumaInaura/vimnow/master/bin/vimnow?'$((RANDOM))$((RANDOM))
+readonly github_code_base_url='https://raw.githubusercontent.com/YumaInaura/vimnow/master/bin/vimnow'
+curl -o .vimnow_donwnload "$github_code_base_url"?$((RANDOM))$((RANDOM))
 
 chmod +x .vimnow_donwnload
 
