@@ -11,7 +11,7 @@ chmod +x "$download_tmp_dir"/bin/vimnow
 
 # Download lib
 mkdir -p "$download_tmp_dir"/lib
-curl -o "$download_tmp_dir"/lib/.setting "$github_code_base_url"/bin/.setting?$((RANDOM))$((RANDOM))
+curl -o "$download_tmp_dir"/lib/.setting "$github_code_base_url"/lib/.setting?$((RANDOM))$((RANDOM))
 chmod +x "$download_tmp_dir"/lib/.setting
 
 # Create home dir
@@ -35,4 +35,6 @@ ln -s "$HOME"/vimnow/bin/vimnow "$command_path"
 mkdir -p "$vimnow_home_dir"/save
 
 echo "vimnow installed"
+
+vimnow --version
 
