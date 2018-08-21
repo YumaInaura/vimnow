@@ -3,6 +3,10 @@
 readonly github_code_base_url='https://raw.githubusercontent.com/YumaInaura/vimnow/master/bin/vimnow'
 
 readonly download_tmp_dir="$HOME"/.vimnow_download
+
+mkdir -p "$download_tmp_dir"/bin
+mkdir -p "$download_tmp_dir"/lib
+
 curl -o "$download_tmp_dir"/.vimnow_donwnload "$github_code_base_url"?$((RANDOM))$((RANDOM))
 
 chmod +x "$download_tmp_dir".vimnow_donwnload
