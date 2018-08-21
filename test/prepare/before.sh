@@ -3,6 +3,7 @@
 export VIMNOW_PATH=./test
 export VIMNOW_LIB_PATH=./lib
 export TEST_MODE=true
+export VIMNOW_VIM_PATH=./test/bin/vim
 
 rm -rf ~/tmp/vimnow/test # Do not use variable because missing remove is so dangerous
 

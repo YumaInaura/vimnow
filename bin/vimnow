@@ -49,13 +49,12 @@ mkdir -p "$save_dir"
 touch "$filepath"
 chmod 0755 "$filepath"
 
-readonly test_mode=${TEST_MODE:-false}
-if "$test_mode"; then
-  shopt -s expand_aliases
-  alias vim="echo 'EDITED' > $filepath"
+readonly vimnow_vim_path=${VIMNOW_VIM_PATH:-}
+if [ ! -z "$vimnow_vim_path" ]; then
+  eval "$vimnow_vim_path" "$filepath"
+else
+  vim "$filepath"
 fi
-
-vim "${filepath}"
 
 if [ $(stat -c '%s' "$filepath") == 0 ]; then
   rm "$filepath"

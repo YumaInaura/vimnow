@@ -1,20 +1,40 @@
 #!/bin/bash -eu
 
-curl -o .vimnow_donwnload 'https://raw.githubusercontent.com/YumaInaura/vimnow/master/bin/vimnow?'$((RANDOM))$((RANDOM))
+readonly github_code_base_url='https://raw.githubusercontent.com/YumaInaura/vimnow/master/'
 
-chmod +x .vimnow_donwnload
+readonly download_tmp_dir="$HOME"/.vimnow_download
 
-mv .vimnow_donwnload /usr/local/bin/vimnow
+# Download bin
+mkdir -p "$download_tmp_dir"/bin
+curl -o "$download_tmp_dir"/bin/vimnow "$github_code_base_url"/bin/vimnow?$((RANDOM))$((RANDOM))
+chmod +x "$download_tmp_dir"/bin/vimnow
 
-readonly vimnow_home="$HOME"/vimnow
-mkdir -p "$vimnow_home"
-mkdir -p "$vimnow_home"/save
+# Download lib
+mkdir -p "$download_tmp_dir"/lib
+curl -o "$download_tmp_dir"/lib/.setting "$github_code_base_url"/lib/.setting?$((RANDOM))$((RANDOM))
+chmod +x "$download_tmp_dir"/lib/.setting
 
+# Create home dir
+readonly vimnow_home_dir="$HOME"/vimnow
+mkdir -p "$vimnow_home_dir"
+
+# Install bin
 rm -rf "$HOME"/vimnow/bin
-cp -rf './bin' "$vimnow_home"
+cp -rf "$download_tmp_dir"/bin "$vimnow_home_dir"
 
+# Install bin
 rm -rf "$HOME"/vimnow/lib
-cp -rf './lib' "$vimnow_home"
+cp -rf "$download_tmp_dir"/lib "$vimnow_home_dir"
+
+# Link command to PATH
+readonly command_path=/usr/local/bin/vimnow
+rm -f "$command_path"
+ln -s "$HOME"/vimnow/bin/vimnow "$command_path"
+
+# Create data directory
+mkdir -p "$vimnow_home_dir"/save
 
 echo "vimnow installed"
+
+vimnow --version
 
