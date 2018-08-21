@@ -2,8 +2,8 @@
 
 source ./test/prepare/before.sh
 
-./bin/vimnow
-./bin/vimnow --sh
+./bin/vimnow >/dev/null
+./bin/vimnow --sh >/dev/null
 
 readonly list_result=$(./bin/vimnow --list)
 readonly list_num=$(echo "$list_result" | wc -l | sed 's/ *//g')
