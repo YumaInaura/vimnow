@@ -7,6 +7,7 @@ readonly vimnow_home_dir="$HOME"/vimnow
 mkdir -p "$vimnow_home_dir"
 
 readonly download_tmp_dir="$HOME"/.vimnow_download
+mkdir -p "$download_tmp_dir"
 curl -o "$download_tmp_dir"/compress.gz "$github_code_base_url"/download/compress.gz?$(date +%s)
 
 # Refresh libraries
