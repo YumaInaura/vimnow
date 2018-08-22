@@ -17,6 +17,8 @@ pushd "$HOME"/vimnow/
 popd
 rm "$HOME"/vimnow/compress.gz
 
+rm -rf "$HOME"/.vimnow_download
+
 # Link command to PATH
 readonly command_path=/usr/local/bin/vimnow
 rm -f "$command_path"
@@ -25,7 +27,9 @@ ln -s "$HOME"/vimnow/bin/vimnow "$command_path"
 # Create data directory
 mkdir -p "$vimnow_home_dir"/save
 
+
 echo "vimnow installed"
+
 
 vimnow --version
 
