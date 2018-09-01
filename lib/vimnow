@@ -32,7 +32,8 @@ if "$continue_mode"; then
 elif [ ! -z "$specify_filename" ] && [[ "$specify_filename" =~ ^[a-zA-Z0-9\.]+$ ]]; then
   readonly filepath="$save_dir"/"$1"
 else
-  readonly filepath="$save_dir"/$(date -u | sed 's/ /-/g')-$(date +%s)"$file_extension"
+  readonly unique_randomized_name=$("$lib_dir"/names-generator)
+  readonly filepath="$save_dir"/${unique_randomized_name}_$(date -u | sed 's/ /-/g')-$(date +%s)"$file_extension"
 fi
 
 touch "$filepath"
