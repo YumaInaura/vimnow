@@ -50,12 +50,7 @@ else
 fi
 
 touch "$filepath"
-
-if "$is_execute_script"; then
-  chmod 0755 "$filepath"
-else
-  chmod 0644 "$filepath"
-fi
+chmod 0755 "$filepath"
 
 readonly vimnow_vim_path=${VIMNOW_VIM_PATH:-}
 if [ ! -z "$vimnow_vim_path" ]; then
