@@ -8,10 +8,12 @@ Do you Wanna start editing with VIM anytime?
 
 ## Install 
 
-Download executable script from remote
-
 ```
-curl https://raw.githubusercontent.com/YumaInaura/vimnow/master/install.sh | sudo bash
+git clone https://github.com/YumaInaura/vimnow
+
+cd ./vimnow
+
+install.sh
 ```
 
 ## Usage
