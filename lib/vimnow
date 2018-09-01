@@ -41,9 +41,9 @@ chmod 0755 "$filepath"
 
 readonly vimnow_vim_path=${VIMNOW_VIM_PATH:-}
 if [ ! -z "$vimnow_vim_path" ]; then
-  eval "$vimnow_vim_path" "$filepath"
+  eval "$vimnow_vim_path" "$filepath" $@
 else
-  vim "$filepath"
+  vim "$filepath" $@
 fi
 
 if [ $(stat -c '%s' "$filepath") == 0 ]; then
