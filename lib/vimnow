@@ -49,5 +49,11 @@ fi
 if [ $(stat -c '%s' "$filepath") == 0 ]; then
   rm "$filepath"
 else
+  if [[ -d "$save_dir"/.git ]]; then
+    cd "$save_dir"
+    git add $(basename "$filepath")
+    git commit -m "update"
+  fi
   echo "$filepath"
 fi
+

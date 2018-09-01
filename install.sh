@@ -16,3 +16,4 @@ echo "vimnow installed"
 
 vimnow --version
 
+vimnow --git-init
