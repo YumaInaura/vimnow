@@ -13,7 +13,7 @@ git clone https://github.com/YumaInaura/vimnow
 
 cd ./vimnow
 
-install.sh
+./install.sh
 ```
 
 ## Usage
