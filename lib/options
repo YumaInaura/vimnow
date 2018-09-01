@@ -13,6 +13,10 @@ for arg in "$@"; do
   elif [ "$arg" = '--path' ]; then
     echo "$save_dir"
     exit
+  elif [ "$arg" = '--git-init' ]; then
+    cd "$save_dir"
+    git init
+    exit
   fi
 done
 
