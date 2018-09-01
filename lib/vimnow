@@ -28,7 +28,7 @@ done
 
 readonly specify_filename=${1:-}
 if "$continue_mode"; then
-  readonly filepath=$(find "$(vimnow --path)" -type f | xargs ls -t | grep -v -e '\.swp$' | head -n 1)
+  readonly filepath=$(find "$(vimnow --path)" -type f -maxdepth 1 | xargs ls -t | grep -v -e '\.swp$' | head -n 1)
 elif [ ! -z "$specify_filename" ] && [[ "$specify_filename" =~ ^[a-zA-Z0-9\.]+$ ]]; then
   readonly filepath="$save_dir"/"$1"
 else
