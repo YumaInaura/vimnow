@@ -1,25 +1,17 @@
-#!/bin/bash -eu
+#!/bin/bash -eux
 
-readonly github_code_base_url='https://raw.githubusercontent.com/YumaInaura/vimnow/master/'
-
-# Create home dir
 readonly vimnow_home_dir="$HOME"/vimnow
 mkdir -p "$vimnow_home_dir"
 
-readonly download_tmp_dir="$HOME"/.vimnow_download
-mkdir -p "$download_tmp_dir"
-curl -o "$download_tmp_dir"/compress.gz "$github_code_base_url"/download/compress.gz?$(date +%s)
+rm -f /usr/local/bin/vimnow
+cp -r ./bin/vimnow /usr/local/bin/vimnow
 
-# Refresh libraries
-cp "$download_tmp_dir"/compress.gz "$HOME"/vimnow/
-pushd "$HOME"/vimnow/
-  tar -xzf compress.gz
-popd
-rm "$HOME"/vimnow/compress.gz
+rm -rf "$vimnow_home_dir"/lib
+cp -rf ./lib "$vimnow_home_dir"/lib
 
-rm -rf "$HOME"/.vimnow_download
+rm -rf "$vimnow_home_dir"/bin
+cp -rf ./bin "$vimnow_home_dir"/bin
 
-# Link command to PATH
 readonly command_path=/usr/local/bin/vimnow
 rm -f "$command_path"
 ln -s "$HOME"/vimnow/bin/vimnow "$command_path"
@@ -27,9 +19,7 @@ ln -s "$HOME"/vimnow/bin/vimnow "$command_path"
 # Create data directory
 mkdir -p "$vimnow_home_dir"/save
 
-
 echo "vimnow installed"
-
 
 vimnow --version
 
