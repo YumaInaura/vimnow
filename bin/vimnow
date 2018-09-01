@@ -14,21 +14,7 @@ fi
 
 source "$lib_dir"/.setting
 
-for arg in "$@"; do
-  if [ "$arg" = '--version' ]; then
-    echo "$VERSION"
-    exit
-  elif [ "$arg" = '--upgrade' ]; then
-    curl 'https://raw.githubusercontent.com/yumainaura/vimnow/master/install.sh?'$((RANDOM))$((RANDOM)) | bash; echo
-    exit
-  elif [ "$arg" = '--list' ]; then
-    find "$save_dir" -type f -maxdepth 1 | grep -v -e '/\.[a-zA-Z0-9_\.]\+$' | xargs ls -l
-    exit
-  elif [ "$arg" = '--path' ]; then
-    echo "$save_dir"
-    exit
-  fi
-done
+source "$lib_dir"/options
 
 mkdir -p "$save_dir"
 
