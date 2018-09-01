@@ -1,6 +1,6 @@
 #!/bin/bash -eu
 
-readonly VERSION=0.4.0
+readonly VERSION=0.5.0
 
 readonly vimnow_path=${VIMNOW_PATH:-~/vimnow}
 readonly save_dir="$vimnow_path"/save
@@ -28,7 +28,7 @@ done
 
 readonly specify_filename=${1:-}
 if "$continue_mode"; then
-  readonly filepath=$(find "$(vimnow --path)" -type f | xargs ls -t | grep -v -e '\.swp$' | head -n 1)
+  readonly filepath=$(find "$(vimnow --path)" -type f -maxdepth 1 | xargs ls -t | grep -v -e '\.swp$' | head -n 1)
 elif [ ! -z "$specify_filename" ] && [[ "$specify_filename" =~ ^[a-zA-Z0-9\.]+$ ]]; then
   readonly filepath="$save_dir"/"$1"
 else
@@ -49,5 +49,11 @@ fi
 if [ $(stat -c '%s' "$filepath") == 0 ]; then
   rm "$filepath"
 else
+  if [[ -d "$save_dir"/.git ]]; then
+    cd "$save_dir"
+    git add $(basename "$filepath")
+    git commit -m "update"
+  fi
   echo "$filepath"
 fi
+
