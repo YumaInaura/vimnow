@@ -4,10 +4,7 @@ for arg in "$@"; do
   if [ "$arg" = '--version' ]; then
     echo "$VERSION"
     exit
-  elif [ "$arg" = '--upgrade' ]; then
-    curl 'https://raw.githubusercontent.com/yumainaura/vimnow/master/install.sh?'$((RANDOM))$((RANDOM)) | bash; echo
-    exit
-  elif [ "$arg" = '--list' ]; then
+ elif [ "$arg" = '--list' ]; then
     find "$(vimnow --save-path)" -maxdepth 1 -type f -printf "%T@ %Tc %p\n" | sort --reverse | sed -E 's/^[0-9]+\.[0-9]+ //'
    exit
   elif [ "$arg" = '--path' ]; then
