@@ -8,7 +8,7 @@ for arg in "$@"; do
     curl 'https://raw.githubusercontent.com/yumainaura/vimnow/master/install.sh?'$((RANDOM))$((RANDOM)) | bash; echo
     exit
   elif [ "$arg" = '--list' ]; then
-    find "$(vimnow --save-path)" -maxdepth 1 -type f -printf "%T@ %Tc %p\n" | sed -E 's/^[0-9]+\.[0-9]+ //'
+    find "$(vimnow --save-path)" -maxdepth 1 -type f -printf "%T@ %Tc %p\n" | sort | sed -E 's/^[0-9]+\.[0-9]+ //'
    exit
   elif [ "$arg" = '--path' ]; then
     echo "$vimnow_path"
