@@ -1,8 +1,0 @@
-# For Mac OS
-if [ $(uname) = 'Darwin' ]; then
-  function date() { $HOME/vimnow/mac/gnu/gdate $@; }
-  function stat() { $HOME/vimnow/mac/gnu/gstat $@; }
-  function find() { $HOME/vimnow/mac/gnu/gfind $@; }
-fi
-
-
