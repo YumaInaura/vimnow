@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env bash -eu
 
 for arg in "$@"; do
   if [ "$arg" = '--version' ]; then
@@ -8,8 +8,8 @@ for arg in "$@"; do
     curl 'https://raw.githubusercontent.com/yumainaura/vimnow/master/install.sh?'$((RANDOM))$((RANDOM)) | bash; echo
     exit
   elif [ "$arg" = '--list' ]; then
-    find "$save_dir" -maxdepth 1 -type f | grep -v -e '/\.[a-zA-Z0-9_\.]\+$' | xargs ls -l
-    exit
+    find "$(vimnow --save-path)" -maxdepth 1 -type f -printf "%T@ %Tc %p\n"  
+   exit
   elif [ "$arg" = '--path' ]; then
     echo "$vimnow_path"
     exit
