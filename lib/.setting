@@ -3,6 +3,7 @@ if [ $(uname) = 'Darwin' ]; then
   function date() { $HOME/vimnow/mac/gnu/gdate $@; }
   function stat() { $HOME/vimnow/mac/gnu/gstat $@; }
   function find() { $HOME/vimnow/mac/gnu/gfind $@; }
+  function sed() { $HOME/vimnow/mac/gnu/gsed $@; }
 fi
 
 
