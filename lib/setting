@@ -1,11 +1,15 @@
+#!/usr/bin/env bash -eu
+
 # For Mac OS
 if [ $(uname) = 'Darwin' ]; then
-  export PATH=$HOME/vimnow/mac/gnu:$PATH
+  readonly mac_gnu_path="$HOME/vimnow/mac/gnu"
+
+  export PATH="$mac_gnu_path":"$PATH"
 
   shopt -s expand_aliases
-  alias date=$HOME/vimnow/mac/gnu/gdate
-  alias stat=$HOME/vimnow/mac/gnu/gstat
-  alias find=$HOME/vimnow/mac/gnu/gfind
-  alias sed=$HOME/vimnow/mac/gnu/gsed
+
+  for command in "date" "stat" "find" "sed"; do
+    eval "alias ${command}="$mac_gnu_path"/g${command}"
+  done
 fi
 
