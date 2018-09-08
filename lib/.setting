@@ -1,16 +1,8 @@
-# For Mac OSdddd
+# For Mac OS
 if [ $(uname) = 'Darwin' ]; then
-  # FIXME: Ask yes or no
-  which gdate >/dev/null || brew install coreutils
-  function date() {
-    gdate $@
-  }
-
-  # FIXME: Ask yes or no
-  which gstat >/dev/null || brew install coreutils
-  function stat() {
-    gstat $@
-  }
+  function date() { $HOME/vimnow/mac/gnu/gdate $@; }
+  function stat() { $HOME/vimnow/mac/gnu/gstat $@; }
+  function find() { $HOME/vimnow/mac/gnu/gfind $@; }
 fi
 
 
