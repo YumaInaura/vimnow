@@ -1,0 +1,11 @@
+# For Mac OS
+if [ $(uname) = 'Darwin' ]; then
+  export PATH=$HOME/vimnow/mac/gnu:$PATH
+
+  shopt -s expand_aliases
+  alias date=$HOME/vimnow/mac/gnu/gdate
+  alias stat=$HOME/vimnow/mac/gnu/gstat
+  alias find=$HOME/vimnow/mac/gnu/gfind
+  alias sed=$HOME/vimnow/mac/gnu/gsed
+fi
+

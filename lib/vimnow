@@ -12,7 +12,7 @@ else
   readonly lib_dir="$vimnow_path"/lib
 fi
 
-source "$lib_dir"/.setting
+source "$lib_dir"/setting
 
 source "$lib_dir"/options
 
