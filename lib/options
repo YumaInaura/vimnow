@@ -1,6 +1,6 @@
 # vim: set syntax=sh :
 
-_vimnow_open(){
+_vimnow_open() {
   local open_filepath="$1"
   touch "$open_filepath"
   chmod 0755 "$open_filepath"
@@ -16,11 +16,12 @@ _vimnow_open(){
     rm "$open_filepath"
   else
     if [[ -d "$save_dir"/.git ]]; then
-      cd "$save_dir"
-      git add $(basename "$open_filepath")
-      git commit -m "update"
+      pushd "$save_dir"
+        git add $(basename "$open_filepath")
+        git commit -m "update"
+      popd
     fi
-    echo "$open_filepath"a
+    echo "$open_filepath"
   fi
 }
 
@@ -49,7 +50,7 @@ for arg in "$@"; do
     if [[ -z "$vimnow_list" ]]; then
       echo "No list" && exit
     else
-      _vimnow_open $(echo "$vimnow_list" | peco)
+      _vimnow_open $(_vimnow_save_path)/$(echo "$vimnow_list" | peco)
     fi
     exit
   elif [ "$arg" = '--path' ]; then
