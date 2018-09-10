@@ -50,7 +50,12 @@ for arg in "$@"; do
     if [[ -z "$vimnow_list" ]]; then
       echo "No list" && exit
     else
-      _vimnow_open $(_vimnow_save_path)/$(echo "$vimnow_list" | peco)
+      selected=$(echo "$vimnow_list" | peco)
+      if [[ -z "$selected" ]]; then
+        echo "No selected" && exit
+      else
+        _vimnow_open $(_vimnow_save_path)/"$selected"
+      fi
     fi
     exit
   elif [ "$arg" = '--path' ]; then
