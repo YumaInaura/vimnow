@@ -1,6 +1,6 @@
 #!/bin/bash -eu
 
-readonly VERSION=0.6.0
+readonly VERSION=0.6.1
 
 readonly vimnow_path=${VIMNOW_PATH:-~/vimnow}
 readonly save_dir="$vimnow_path"/save
