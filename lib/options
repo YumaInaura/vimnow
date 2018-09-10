@@ -1,19 +1,27 @@
 # vim: set syntax=sh :
 
+_vimnow_save_path() {
+  echo "$save_dir"
+}
+
+_vimnow_list() {
+  for filepath in $(find "$(vimnow --save-path)" -maxdepth 1 -type f -printf "%p\n" | sort --reverse);do
+    basename "$filepath"
+  done
+}
+
 for arg in "$@"; do
   if [ "$arg" = '--version' ]; then
     echo "$VERSION"
     exit
   elif [ "$arg" = '--full-list' ]; then
-    find "$(vimnow --save-path)" -maxdepth 1 -type f -printf "%T@ %Tc %p\n" | sort --reverse | sed -E 's/^[0-9]+\.[0-9]+ //'
+    find "$(_vimnow_save_path)" -maxdepth 1 -type f -printf "%T@ %Tc %p\n" | sort --reverse | sed -E 's/^[0-9]+\.[0-9]+ //'
     exit
   elif [ "$arg" = '--list' ]; then
-    for filepath in $(find "$(vimnow --save-path)" -maxdepth 1 -type f -printf "%p\n" | sort --reverse);do
-      basename "$filepath"
-    done
+    _vimnow_list
     exit
   elif [[ "$arg" = '--continue' ]]; then
-    vimnow_list=$(vimnow --list)
+    vimnow_list=$(_vimnow_list)
     if [[ -z "$vimnow_list" ]]; then
       echo "No list" && exit
     else
@@ -24,7 +32,7 @@ for arg in "$@"; do
     echo "$vimnow_path"
     exit
   elif [ "$arg" = '--save-path' ]; then
-    echo "$save_dir"
+    _vimnow_save_path
     exit
   elif [ "$arg" = '--git-init' ]; then
     cd "$save_dir"
