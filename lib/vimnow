@@ -20,17 +20,13 @@ mkdir -p "$save_dir"
 
 file_extension=''
 is_execute_script=false
-continue_mode=false
 for option in "$@"; do
   [ "$option" = '--sh' ] && file_extension='.sh' && is_execute_script=true
-  [ "$option" = '--continue' ] && continue_mode=true
 done
 
 readonly specify_filename=${1:-}
-if "$continue_mode"; then
-  readonly filepath=$(vimnow --list | head -n 1)
-elif [ ! -z "$specify_filename" ] && [[ "$specify_filename" =~ ^[a-zA-Z0-9\.]+$ ]]; then
-  readonly filepath="$save_dir"/"$1"
+if [ ! -z "$specify_filename" ] && [[ ! "$specify_filename" =~ ^- ]]; then
+  readonly filepath="$save_dir"/"$specify_filename"
 else
   readonly unique_randomized_name=$("$lib_dir"/names-generator | perl -pe 's/_/-/g')
   readonly filepath="$save_dir"/${unique_randomized_name}-$(date -u | perl -pe 's/^\s+|\s+$//g' | perl -pe 's/\s+/-/g')-$(date +%s)"$file_extension"

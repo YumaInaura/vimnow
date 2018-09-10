@@ -9,8 +9,16 @@ for arg in "$@"; do
     exit
   elif [ "$arg" = '--list' ]; then
     for filepath in $(find "$(vimnow --save-path)" -maxdepth 1 -type f -printf "%p\n" | sort --reverse);do
-      echo "$filepath"
+      basename "$filepath"
     done
+    exit
+  elif [[ "$arg" = '--continue' ]]; then
+    vimnow_list=$(vimnow --list)
+    if [[ -z "$vimnow_list" ]]; then
+      echo "No list" && exit
+    else
+      vimnow $(echo "$vimnow_list" | peco)
+    fi
     exit
   elif [ "$arg" = '--path' ]; then
     echo "$vimnow_path"
