@@ -37,26 +37,26 @@ else
 fi
 
 vimnow_open(){
-  local filepath="$1"
-  touch "$filepath"
-  chmod 0755 "$filepath"
+  local open_filepath="$1"
+  touch "$open_filepath"
+  chmod 0755 "$open_filepath"
   
   readonly vimnow_vim_path=${VIMNOW_VIM_PATH:-}
   if [ ! -z "$vimnow_vim_path" ]; then
-    eval "$vimnow_vim_path" "$filepath"
+    eval "$vimnow_vim_path" "$open_filepath"
   else
-    vim "$filepath"
+    vim "$open_filepath"
   fi
   
-  if [ $(stat -c '%s' "$filepath") == 0 ]; then
-    rm "$filepath"
+  if [ $(stat -c '%s' "$open_filepath") == 0 ]; then
+    rm "$open_filepath"
   else
     if [[ -d "$save_dir"/.git ]]; then
       cd "$save_dir"
-      git add $(basename "$filepath")
+      git add $(basename "$open_filepath")
       git commit -m "update"
     fi
-    echo "$filepath"a
+    echo "$open_filepath"a
   fi
 }
 
