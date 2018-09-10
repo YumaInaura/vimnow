@@ -36,24 +36,29 @@ else
   readonly filepath="$save_dir"/${unique_randomized_name}-$(date -u | perl -pe 's/^\s+|\s+$//g' | perl -pe 's/\s+/-/g')-$(date +%s)"$file_extension"
 fi
 
-touch "$filepath"
-chmod 0755 "$filepath"
-
-readonly vimnow_vim_path=${VIMNOW_VIM_PATH:-}
-if [ ! -z "$vimnow_vim_path" ]; then
-  eval "$vimnow_vim_path" "$filepath"
-else
-  vim "$filepath"
-fi
-
-if [ $(stat -c '%s' "$filepath") == 0 ]; then
-  rm "$filepath"
-else
-  if [[ -d "$save_dir"/.git ]]; then
-    cd "$save_dir"
-    git add $(basename "$filepath")
-    git commit -m "update"
+vimnow_open(){
+  local open_filepath="$1"
+  touch "$open_filepath"
+  chmod 0755 "$open_filepath"
+  
+  readonly vimnow_vim_path=${VIMNOW_VIM_PATH:-}
+  if [ ! -z "$vimnow_vim_path" ]; then
+    eval "$vimnow_vim_path" "$open_filepath"
+  else
+    vim "$open_filepath"
   fi
-  echo "$filepath"
-fi
+  
+  if [ $(stat -c '%s' "$open_filepath") == 0 ]; then
+    rm "$open_filepath"
+  else
+    if [[ -d "$save_dir"/.git ]]; then
+      cd "$save_dir"
+      git add $(basename "$open_filepath")
+      git commit -m "update"
+    fi
+    echo "$open_filepath"a
+  fi
+}
+
+vimnow_open "$filepath"
 
