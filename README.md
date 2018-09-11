@@ -33,3 +33,18 @@ Randomized file created in vimnow directory
 ```
 $ vimnow --list
 ```
+
+## Hint
+
+### Vim command
+
+Execute current file
+
+```
+!%:p
+```
+
+```
+!%
+```
+
